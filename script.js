@@ -15,11 +15,13 @@ function trazResultadoDaBusca(event){
     const respostaDaBusca = new XMLHttpRequest();
     respostaDaBusca.open("GET", `http://api.giphy.com/v1/gifs/search?q=${buscaGif}&api_key=qLpv79E7M9WRUZ0v5sMSXeakElhUbqHJ& ` )
     respostaDaBusca.onload = carregaPostsComGifs;
-
+    respostaDaBusca.onerror = erro;
+    respostaDaBusca.send();
 }
 
 function carregaPostsComGifs(){
-
+    listaGifs = JSON.parse(this.responseText);
+    exibePosts();
 
 }
 
